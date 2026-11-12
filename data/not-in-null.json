@@ -1,0 +1,105 @@
+{
+  "schema": [
+    {
+      "id": 1,
+      "name": "reading",
+      "type": "long"
+    },
+    {
+      "id": 2,
+      "name": "state",
+      "type": "string"
+    },
+    {
+      "id": 3,
+      "name": "time",
+      "type": "timestamp"
+    }
+  ],
+  "partition_specs": [
+    {
+      "id": 0,
+      "fields": []
+    }
+  ],
+  "files": [
+    {
+      "id": "f1",
+      "record_count": 3,
+      "spec_id": 0,
+      "partition": [],
+      "metrics": {
+        "1": {
+          "value_count": 3,
+          "null_count": 1,
+          "nan_count": 0,
+          "lower": 1,
+          "upper": 10,
+          "bounds": "exact"
+        },
+        "2": {
+          "value_count": 3,
+          "null_count": 0,
+          "nan_count": 0,
+          "lower": "ok",
+          "upper": "warn",
+          "bounds": "exact"
+        }
+      }
+    },
+    {
+      "id": "f2",
+      "record_count": 2,
+      "spec_id": 0,
+      "partition": [],
+      "metrics": {
+        "1": {
+          "value_count": 2,
+          "null_count": 0,
+          "nan_count": 0,
+          "lower": 20,
+          "upper": 30,
+          "bounds": "exact"
+        }
+      }
+    }
+  ],
+  "predicate": {
+    "op": "not",
+    "arg": {
+      "op": "in",
+      "field": 1,
+      "values": [
+        5,
+        null
+      ]
+    }
+  },
+  "reference_rows": {
+    "f1": [
+      {
+        "1": 1,
+        "2": "ok"
+      },
+      {
+        "1": 10,
+        "2": "warn"
+      },
+      {
+        "1": null,
+        "2": "ok"
+      }
+    ],
+    "f2": [
+      {
+        "1": 20,
+        "2": "ok"
+      },
+      {
+        "1": 30,
+        "2": "warn"
+      }
+    ]
+  },
+  "snapshot": "stats-s1"
+}
